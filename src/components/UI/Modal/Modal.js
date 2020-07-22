@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types'
 
 import classes from './Modal.module.css'
@@ -21,4 +21,8 @@ modal.propTypes = {
   modalClosed: PropTypes.func.isRequired
 }
 
-export default modal;
+const areEqual = (prevProps, nextProps) => {
+  return prevProps.show === nextProps.show
+}
+
+export default memo(modal, areEqual);
